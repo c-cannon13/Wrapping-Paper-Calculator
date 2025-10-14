@@ -1,4 +1,4 @@
-# Wrapping Paper App (Python)
+# Wrapping Paper App - Python
 
 A small Python application for calculating **wrapping paper** and **cost** for common gift shapes.  
 Supports **cube**, **cuboid**, and **cylinder** packages and exports results to a file for record‑keeping.
