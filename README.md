@@ -1,130 +1,158 @@
-# Wrapping Paper App - Python
+# Dementia Notification App - .NET MAUI
 
-A small Python application for calculating **wrapping paper** and **cost** for common gift shapes.  
-Supports **cube**, **cuboid**, and **cylinder** packages and exports results to a file for record‑keeping.
+A cross‑platform **.NET MAUI** application designed to provide **simple reminders** and **essential information** to assist individuals living with dementia and their caregivers.  
+This project integrates key **Human–Computer Interaction (HCI)** principles to ensure the interface is calm, clear, and accessible for users with cognitive and visual challenges.
 
+---
 
 ## Overview
+The Dementia Notification App is a user‑centred tool that enhances the independence and daily functioning of individuals with dementia while reducing the burden on caregivers. It offers:
 
-Given package dimensions and a chosen paper type, the app computes:
-- **Surface area** + **waste allowance**
-- **Required sheet count / roll length** (simplified model)
-- **Total price** based on paper tier (e.g., *Cheap* vs *Expensive*)
-- Optional **write‑out** of results to a text file
+- **Daily Reminders** for medication, appointments, and activities
+- **Information Page** for storing emergency and contact details
+- **Help Page** for quick access to support and reassurance
 
-The repo includes simple reference images for each shape and tiles for paper tiers to help explain the UI/flow.
+Developed using findings from the dissertation *Human‑Computer Interaction in Dementia Care: Developing a Dementia Reminder Application*, this app combines ethical data handling, HCI best practice, and accessible interaction design.
 
+---
+
+## Key Principles from the Research
+- **Human‑Computer Interaction (HCI):** Simplified navigation, large buttons, high contrast colours (purple/yellow), and friendly tone to enhance readability and confidence.
+- **Accessibility:** Clear sans‑serif fonts, large text sizes, calm colour palettes (green and blue), and consistent layout.
+- **Ethical & Legal Compliance:** Data protection aligned with the **Data Protection Act (2018)** and guidance from dementia care organisations to protect user privacy.
+- **User‑Centred Design:** Developed and refined through focus groups with carers and healthcare professionals to ensure real‑world usability.
+
+---
 
 ## Project Structure
-
 ```
 .
-├── Wrapping Papper Project.py                 # Main script (CLI)
-├── Wrapping Papper Project - 2105616.py       # Alternate/assessed version
-├── wrighting to a new file.py                 # Utility that writes results to a file
-├── Cube.png                                   # Reference image for cube
-├── Cuboid.png                                 # Reference image for cuboid
-├── Cylinder.png                               # Reference image for cylinder
-├── Cheap.png                                  # Tile for cheap paper
-└── Expensive.png                              # Tile for expensive paper
+├── DementiaNotificationApp.sln                  # Solution
+├── DementiaNotificationApp.csproj               # Project file
+├── App.xaml                                     # Global resources, colour themes
+├── App.xaml.cs                                  # App lifecycle
+├── AppShell.xaml                                # Navigation structure
+├── MainPage.xaml                                # Home page (reminders hub)
+├── InfoPage.xaml                                # Key user & carer information
+├── HelpPage.xaml                                # Emergency assistance & reassurance
+├── Platforms/                                   # iOS / Android / Windows / MacCatalyst
+└── Resources/                                   # Fonts, images, icons, audio alerts
 ```
 
-> Note: Filenames preserve the original coursework naming.
-
+---
 
 ## Features
+- Simple **Home screen** with clearly listed daily tasks
+- Visual **notifications** and optional audio alerts for reminders
+- **Password‑protected info page** for storing private user data
+- **Emergency Help page** simulating caregiver contact
+- Consistent **confirmation prompts** to avoid accidental actions
 
-- Calculate paper needed for:
-  - **Cube** (edge `a`)
-  - **Cuboid** (length `l`, width `w`, height `h`)
-  - **Cylinder** (radius `r`, height `h`)
-- Choose **paper tier** (e.g., Cheap vs Expensive) with distinct price per unit
-- Optional **waste margin** (off‑cut allowance)
-- **Export** results to `output.txt` (or a file you choose)
+Planned enhancements:
+- Persistent storage for reminders (SQLite)
+- Secure caregiver login & quick call/SMS feature
+- Theming for **high contrast** or **large type** display modes
 
+---
 
-## Formulae Used (simplified)
+## How to Use the Application
 
-- **Cube area:** `6a^2`
-- **Cuboid area:** `2(lw + lh + wh)`
-- **Cylinder area:** `2πr^2 + 2πrh`
-- **Total required:** `surface_area × (1 + waste_margin)`
+### 1. Launching the App
+After installation or deployment, open the Dementia Notification App on your device. You will be taken to the **Home screen**, which displays your daily reminders (e.g., “Take medication at 9:00 AM”).
 
-> Rolls/sheeting are modelled as a direct area purchase for simplicity.
+### 2. Managing Daily Tasks
+- View your list of reminders on the **Home page**.
+- When a task is complete, tap the **Done** button.
+- A confirmation popup appears — select **Yes** to mark it completed or **No** to cancel.
+- Completed tasks are removed from the list to keep the interface clear.
 
+### 3. Receiving Notifications
+- The app will trigger reminder notifications at preset times.
+- Tap **OK** when you receive a notification to acknowledge it.
 
-## How to Run
+### 4. Using the Information Page
+- Tap **Info** on the Home screen.
+- Enter or update personal details (e.g., name, address, carer phone number).
+- Press **Save** — you will be asked for a password to confirm changes.
+- The app will show a confirmation message if information is successfully saved.
 
-Prerequisite: **Python 3.10+**
+### 5. Accessing Help
+- Tap the **Help** button on the Home screen (or from Info page) to simulate contacting a caregiver.
+- A message such as “Help is on the way” appears for reassurance.
+
+### 6. Accessibility Tips
+- Use device settings for text enlargement or screen readers if needed.
+- Maintain sufficient screen brightness for visibility.
+- Caregivers may assist with setup, especially during first‑time configuration.
+
+---
+
+## Testing Summary
+Testing was conducted using Visual Studio and emulators for Windows and Android. 
+All major navigation paths and reminder functions passed successfully after debugging. User feedback from **11 caregivers and healthcare professionals** highlighted the app’s:
+
+- Ease of use and visual simplicity  
+- Helpful daily reminder system  
+- Suggested improvements in data security and persistent storage  
+
+Overall satisfaction was high, and over half of participants said they would download or recommend the app in its current form.
+
+---
+
+## Development Tools
+- **Language:** C#  
+- **Framework:** .NET MAUI  
+- **IDE:** Visual Studio 2022  
+- **Testing:** Windows Emulator & Android Simulator
+
+---
+
+## How to Build & Run
+
+### Prerequisites
+- **.NET 8 SDK** (or 7)
+- **MAUI workloads** installed via terminal:
 
 ```bash
-# Clone your repo locally, then run:
-python "Wrapping Papper Project.py"
+dotnet workload install maui
+```
+
+### Clone and Build
+```bash
+git clone https://github.com/c-cannon13/DementiaNotificationApp.git
+cd DementiaNotificationApp
+dotnet build
+```
+
+### Run the App
+```bash
+dotnet maui run -t windows
 # or
-python "Wrapping Papper Project - 2105616.py"
+# dotnet maui run -t android
 ```
 
-If the script writes a report, it will appear alongside the program (e.g., `output.txt`).
+Ensure an emulator or connected device is available for deployment.
 
-### Running the write‑out utility directly
-```bash
-python "wrighting to a new file.py"
-```
+---
 
+## Future Development
+- Enable **automatic cloud backup** of reminders
+- Add **voice‑activated commands** (for accessibility)
+- Integrate **caregiver dashboard** for remote oversight
+- Expand **multi‑language support**
+- Refine data encryption & authentication systems
 
-## Sample Session (CLI)
-
-```
-Select shape: 1) Cube  2) Cuboid  3) Cylinder
-> 2
-Enter length (cm): 30
-Enter width  (cm): 20
-Enter height (cm): 12
-Select paper: 1) Cheap  2) Expensive
-> 1
-Waste margin (e.g., 0.08 for 8%): 0.08
-
-Total area:  4392.0 cm^2
-Paper cost:  £4.39
-Saved to: output.txt
-```
-
-*(Values shown for illustration; your script may format differently.)*
-
-
-## Configuration
-
-If you want to centralise prices and margins, add a small config at the top of the script, e.g.:
-
-```python
-CHEAP_PRICE_PER_CM2 = 0.001
-EXPENSIVE_PRICE_PER_CM2 = 0.0025
-DEFAULT_WASTE = 0.08
-```
-
-
-## Tech
-
-- Python standard library only (no external dependencies)
-- CLI‑based workflow for easy marking/demo
-
-
-## Future Enhancements
-
-- Support **ribbon** and **gift‑wrap seams** (fold allowances)
-- Convert area to **roll length** given roll width
-- **GUI** using Tkinter or a minimal web UI (Flask)
-- Unit tests for edge cases (zero/negative dimensions)
-
+---
 
 ## Author
-
 **Charlotte Cannon**  
+BSc (Hons) Software Engineering — University of Winchester  
 Graduate Software Engineer  
-- [LinkedIn]https://www.linkedin.com/in/charlotte-cannon-165875195/
-- [GitHub]https://github.com/c-cannon13
+- [LinkedIn](https://www.linkedin.com/in/charlotte-cannon-165875195/)  
+- [GitHub](https://github.com/c-cannon13)
 
+---
 
 ## License
-
-This project is provided for educational and portfolio demonstration purposes.
+This project is provided for educational and portfolio demonstration purposes.  
+© 2024 Charlotte Cannon. All rights reserved.
